@@ -1,8 +1,12 @@
-import { Module } from '@nestjs/common';
+import { DatabaseModule } from '@/core/database/database.module';
+import { forwardRef, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true })],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    forwardRef(() => DatabaseModule),
+  ],
   controllers: [],
   providers: [],
 })
