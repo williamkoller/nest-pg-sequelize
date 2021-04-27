@@ -1,4 +1,4 @@
-import { DatabaseModule } from '@/core/database/database.module';
+import { DatabaseModule } from '@/modules/core/database/database.module';
 import { forwardRef, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 

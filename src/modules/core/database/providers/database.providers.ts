@@ -4,15 +4,15 @@ import {
   DEVELOPMENT,
   TEST,
   PRODUCTION,
-} from '@/core/database/constantes';
-import { databaseConfig } from '@/core/database/config/database.config';
-import { IDatabaseConfigAttributes } from '@/core/database/interface/db-config.interface';
+} from '@/modules/core/database/constantes';
+import { databaseConfig } from '@/modules/core/database/config/database.config';
+import { User } from '@/modules/users/model/user.model';
 
 export const databaseProviders = [
   {
     provide: SEQUELIZE,
     useFactory: async () => {
-      let config: IDatabaseConfigAttributes;
+      let config;
       switch (process.env.NODE_ENV) {
         case DEVELOPMENT:
           config = databaseConfig.development;
@@ -26,8 +26,8 @@ export const databaseProviders = [
         default:
           config = databaseConfig.development;
       }
-      const sequelize = new Sequelize(config as string);
-      sequelize.addModels(['models goes here']);
+      const sequelize = new Sequelize(config);
+      sequelize.addModels([User]);
       await sequelize.sync();
       return sequelize;
     },

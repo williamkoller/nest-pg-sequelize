@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import { IDatabaseConfig } from '@/core/database/interface/db-config.interface';
+import { IDatabaseConfig } from '@/modules/core/database/interface/db-config.interface';
 dotenv.config();
 
 export const databaseConfig: IDatabaseConfig = {
